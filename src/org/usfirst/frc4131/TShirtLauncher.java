@@ -26,12 +26,12 @@ public class TShirtLauncher extends SimpleRobot{
 	private RobotDrive drive = new RobotDrive(1, 2, 3, 4);
 	private Solenoid[] launcher = new Solenoid[6];
 	private int current = 0;
-	private Jaguar elevator = new Jaguar(5);
+//	private Jaguar elevator = new Jaguar(5);
 	private Relay lights = new Relay(1);
 	private Relay siren = new Relay(2);
 	public void robotInit(){
 		for(int i=0;i<launcher.length;i++){launcher[i] = new Solenoid(i+1); launcher[i].set(false);}
-		elevator.set(0);
+//		elevator.set(0);
 		lights.set(Value.kForward);
 		siren.set(Value.kOff);
 	}
@@ -43,7 +43,7 @@ public class TShirtLauncher extends SimpleRobot{
 			pressedPrev = buttonPrev.get();
 			if(buttonNext.get() && !pressedNext){if(current==launcher.length-1) current = 0; else current++;}
 			pressedNext = buttonNext.get();
-			elevator.set(controller.getRawAxis(2));//Left stick Y-axis
+//			elevator.set(controller.getRawAxis(2));//Left stick Y-axis
 			if(controller.getRawAxis(3)<=-0.9 && fireTicks>=0){//Right trigger, with 0.1 deadband
 				fireTicks++;
 				if(fireTicks>=600){
